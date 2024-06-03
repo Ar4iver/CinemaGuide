@@ -1,3 +1,13 @@
+@import "reset.scss";
+@import "variables/global.scss";
+@import "themes/default.scss";
+@import "themes/dark.scss";
+
 .main {
-  font-size: 40px;
+  font: var(--font-lg);
+
+  background: var(--bg-color);
+  color: var(--primary-color);
+
+  min-height: 100vh;
 }
