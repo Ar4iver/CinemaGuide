@@ -1,0 +1,22 @@
+.Header {
+  width: 100%;
+  padding: 24px 80px;
+}
+
+.middle {
+  display: flex;
+  gap: 40px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: var(--width-container);
+}
+
+.Logo {
+  margin-right: 80px;
+}

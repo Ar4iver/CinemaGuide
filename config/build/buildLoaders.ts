@@ -7,6 +7,21 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
  */
 
 export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
+
+	const svgLoader = {
+			test: /\.svg$/,
+			use: ['@svgr/webpack'],
+	}
+
+	const fileLoader =  {
+		test: /\.(png|jpe?g|gif)$/i,
+		use: [
+			{
+				loader: 'file-loader',
+			},
+		],
+	}
+
 	const cssLoaders = {
 		test: /\.(sa|sc|c)ss$/i,
 		use: [
@@ -34,5 +49,5 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
 		exclude: /node_modules/,
 	}
 
-	return [typecriptLoader, cssLoaders]
+	return [typecriptLoader, cssLoaders, svgLoader, fileLoader]
 }

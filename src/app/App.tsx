@@ -1,17 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import { AppRouter } from './providers/router'
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './theme/ThemeContext'
-import { useTheme } from 'shared/hooks/useTheme'
-
-
+import { Modal } from 'shared/ui/Modal/Modal'
 
 const App = () => {
 
-	const {toogleTheme, theme} = useTheme()
-
 	return (
-		<div className={`main ${theme}`}>
-			<button onClick={toogleTheme}>Switch Theme</button>
+		<div className={`app default`}>
+			<Modal />
 			<AppRouter />
 		</div>
 	)

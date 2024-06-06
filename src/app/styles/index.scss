@@ -3,7 +3,17 @@
 @import "themes/default.scss";
 @import "themes/dark.scss";
 
-.main {
+// * {
+//   border:  1px solid red;
+// }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+
   font: var(--font-lg);
 
   background: var(--bg-color);
