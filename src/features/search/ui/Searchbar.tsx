@@ -10,8 +10,6 @@ interface SearchbarProps {
 
 export const Searchbar = ({ className }: SearchbarProps) => {
 
-  
-
   return (
     <Input placeholder='Поиск' icon={<SearchIcon />} className={cls.searchInput} />
   )

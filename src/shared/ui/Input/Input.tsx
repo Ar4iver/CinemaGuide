@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode } from "react";
+import { InputHTMLAttributes, memo, ReactNode } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from './Input.module.scss'
 import IconClean from 'shared/assets/icons/search_iconClean.svg'
@@ -17,7 +17,7 @@ interface InputProps extends HTMLInputProps {
   icon?: ReactNode
 }
 
-export const Input = (props: InputProps) => {
+export const Input = memo((props: InputProps) => {
   const {
     className,
     value,
@@ -41,4 +41,4 @@ const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       { !value && <div className={cls.iconClean}>{<IconClean />}</div> }
     </div>
   )
-}
+})

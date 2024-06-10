@@ -10,11 +10,10 @@
 html, body {
   height: 100%;
   margin: 0;
+  font: var(--font-lg);
 }
 
 .app {
-
-  font: var(--font-lg);
 
   background: var(--bg-color);
   color: var(--primary-color);
