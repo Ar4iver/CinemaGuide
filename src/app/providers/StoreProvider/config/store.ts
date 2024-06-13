@@ -2,15 +2,21 @@ import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 import { StateSchema } from "./StateSchema";
 import { movieReducer } from "entities/Movie/model/slice/movieSlice";
 import { userReducer } from "entities/User";
-import { loginReducer } from "features/AuthByUsername";
 import { useDispatch } from "react-redux";
+import { authReducer } from "features/auth/model/slice/authSlice";
+import { loginReducer } from "features/auth/forms/AuthByEmail";
+import { registerReducer } from "features/auth/forms/AuthByEmail/model/slice/registerSlice";
+import { profileReducer } from "features/profile/model/slice/profileSlice";
 
 export function createReduxStore(initialState?: StateSchema) {
 
   const rootReducers: ReducersMapObject<StateSchema> = {
     movie: movieReducer,
     user: userReducer,
-    loginForm: loginReducer
+    auth: authReducer,
+    loginForm: loginReducer,
+    registerForm: registerReducer,
+    profile: profileReducer
   }
 
    return configureStore<StateSchema>({
