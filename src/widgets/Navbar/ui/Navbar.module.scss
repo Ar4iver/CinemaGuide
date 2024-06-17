@@ -1,0 +1,14 @@
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  
+  a {
+    color: var(--primary-color);
+  }
+}
+
+.active {
+  border-bottom: 2px solid #DC5DFC;
+}

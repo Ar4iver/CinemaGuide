@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  cursor: progress;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  color: var(--primary-color);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  position: absolute;
+  padding-left: 18px;
+  font-size: 0;
+}
+
+.iconClean {
+  position: absolute;
+  right: 16px;
+  cursor: pointer;
+  font-size: 0;
+}

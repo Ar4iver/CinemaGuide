@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+:root {
+
+  --width-container: 1440px;
+  --padding-container: 0 80px;
+
+  --font-family-main: 'Play', sans-serif;
+
+  --font-size-xs: 12px;
+  --font-line-xs: 16px;
+  --font-xs: var(--font-size-xs) / var(--font-line-xs) var(--font-family-main);
+
+  --font-size-sm: 14px;
+  --font-line-sm: 20px;
+  --font-sm: var(--font-size-sm) / var(--font-line-sm) var(--font-family-main);
+
+  --font-size-md: 18px;
+  --font-line-md: 24px;
+  --font-md: var(--font-size-md) / var(--font-line-md) var(--font-family-main);
+
+  --font-size-lg: 24px;
+  --font-line-lg: 32px;
+  --font-lg: var(--font-size-lg) / var(--font-line-lg) var(--font-family-main);
+
+  --font-size-xl: 40px;
+  --font-line-xl: 48px;
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
+  --font-size-xxl: 48px;
+  --font-line-xxl: 56px;
+  --font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-main);
+
+}

@@ -15,8 +15,8 @@ html:focus-within{
 	scroll-behavior: smooth; 
 }
 
-a:not([class]){
-	text-decoration-skip-ink: auto; 
+a{
+	text-decoration: none;
 }
 
 img, picture, svg, video, canvas{
@@ -29,7 +29,12 @@ img, picture, svg, video, canvas{
 }
 
 input, button, textarea, select{
-	font: inherit; 
+	padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 body, html{
