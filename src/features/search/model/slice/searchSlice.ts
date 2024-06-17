@@ -1,16 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { SearchDetailsSchema } from "../types/SearchSchema"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { SearchSchema } from "../types/SearchSchema"
 
-const initialState: SearchDetailsSchema  = {
-  isLoading: false,
-  error: '',
-  data: undefined,
+const initialState:  SearchSchema = {
+  text: ''
 }
 
 export const searchSlice = createSlice({
 name: 'search',
 initialState,
-reducers: {},
+reducers: {
+  setTextInput: (state, action: PayloadAction<string>) => {
+    state.text = action.payload
+  }
+},
 })
 
 export const { actions: searchActions } = searchSlice

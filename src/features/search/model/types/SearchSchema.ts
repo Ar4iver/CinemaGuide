@@ -1,11 +1,12 @@
 import { MovieSchema } from "entities/Movie";
 
 export interface SearchSchema {
-  result: MovieSchema[]
+  // result: MovieSchema[]
+  text: string
 }
 
-export interface SearchDetailsSchema {
-  isLoading: boolean,
-  error?: string,
-  data?: SearchSchema,
-}
+// export interface SearchDetailsSchema {
+//   isLoading: boolean,
+//   error?: string,
+//   data?: SearchSchema,
+// }

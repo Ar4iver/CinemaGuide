@@ -1,3 +1,5 @@
+import { MovieSchema } from "entities/Movie";
+
 export interface ProfileSchemas {
   favorites: string[]
   surname: string,

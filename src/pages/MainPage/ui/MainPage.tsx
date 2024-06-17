@@ -1,15 +1,35 @@
 import React from 'react'
+import { useGetRandomMovie } from 'shared/hooks/useGetRandomMovie'
 import { Layout } from 'shared/ui/AppLink/Layout/Layout'
-import { Container } from 'shared/ui/Container/ui/Container'
+import { Hero } from 'widgets/Hero'
 
 const MainPage = () => {
-  return (
-    <Layout>
-      <Container>
-        Главная страница
-     </Container>
-    </Layout>
-  )
+
+  const { data, isError, isSuccess, isLoading, refetch } = useGetRandomMovie()
+
+  if(isLoading) {
+    return (
+      <Layout>
+          Is loading....
+      </Layout>
+    )
+  }
+
+  if(isSuccess) {
+    return (
+      <Layout>
+          <Hero movie={data} refetch={refetch} />
+      </Layout>
+    )
+  }
+
+  if(isError) {
+    return (
+      <Layout>
+          Ошибка
+      </Layout>
+    )
+  }
 }
 
 export default MainPage

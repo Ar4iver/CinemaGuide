@@ -5,6 +5,7 @@
 }
 
 input {
+  cursor: progress;
   font-size: 18px;
   font-weight: 400;
   border: none;
@@ -24,6 +25,6 @@ input {
 .iconClean {
   position: absolute;
   right: 16px;
-
+  cursor: pointer;
   font-size: 0;
 }

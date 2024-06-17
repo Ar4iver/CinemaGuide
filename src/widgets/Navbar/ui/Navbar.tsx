@@ -12,8 +12,6 @@ export const Navbar = ({ className }: NavbarProps) => {
   const location = useLocation();
   const path = location.pathname;
 
-  console.log(path);
-
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>
       <AppLink className={path === '/' ? cls.active : ''} to={'/'}>Главная</AppLink>

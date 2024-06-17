@@ -1,0 +1,97 @@
+.Hero {
+    margin: 0 auto;
+    height: 100vh;
+    width: 1440px;
+    padding-top: 106px;
+    display: flex;
+}
+
+.infoMovieBanner {
+  width: 50%;
+  z-index: 1;
+}
+
+.title {
+  font: var(--font-xxl);
+  margin-bottom: 16px;
+}
+
+.movieLink {
+  display: flex;
+  color: var(--primary-color);
+  background-color: var(--main-grey);
+  border-radius: 28px;
+  padding: 16px 48px 16px 48px;
+}
+
+.updateBtn, .favoritesBtn {
+  background-color: var(--main-grey);
+  border-radius: 28px;
+  padding: 19px 24px 19px 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.trailerBtnAction {
+  border-radius: 28px;
+  padding: 16px 48px 16px 48px;
+  color: var(--primary-color);
+  background-color: var(--secondary-color-2);
+}
+
+.middleInfo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.starIcon {
+  font-size: 0px;
+}
+
+.rating {
+  display: flex;
+  border-radius: 16px;
+  padding: 8px 12px 8px 12px;
+  gap: 4px;
+}
+
+.gold {
+  background-color: var(--rating-gold);
+}
+
+.green {
+  background-color: var(--rating-green);
+}
+
+.grey {
+  background-color: var(--rating-grey);
+}
+
+.red {
+  background-color: var(--rating-red);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.updateBtn {
+  transition: transform 1s;
+}
+
+.updateBtn.spin {
+  animation: spin 1s linear;
+}

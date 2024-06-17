@@ -1,8 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { User, userActions } from "entities/User";
+import { User } from "entities/User";
 import { fetchProfile } from "features/profile/model/services/fetchProfile/fetchProfile";
-import { profileActions } from "features/profile/model/slice/profileSlice";
 
 interface loginByEmail {
   email: string
@@ -16,9 +15,9 @@ export const loginByEmail = createAsyncThunk<User, loginByEmail>(
       const response = await axios.post<User>('https://cinemaguide.skillbox.cc/auth/login', {
         email, password
     },
-      // {
-      //   withCredentials: true
-      // }
+      {
+        withCredentials: true
+      }
     )
 
     if(!response.data) {

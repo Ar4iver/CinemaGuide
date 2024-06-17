@@ -15,6 +15,7 @@ interface InputProps extends HTMLInputProps {
   autofocus?: boolean;
   readonly?: boolean;
   icon?: ReactNode
+  cleanInputEvent?: () => void
 }
 
 export const Input = memo((props: InputProps) => {
@@ -27,6 +28,7 @@ export const Input = memo((props: InputProps) => {
     autofocus,
     readonly,
     icon,
+    cleanInputEvent,
     ...otherProps
 } = props;
 
@@ -38,7 +40,7 @@ const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     <div className={cls.wrapper}>
       {icon && <div className={cls.icon}>{icon}</div>}
       <input placeholder={placeholder} value={value} type={type} onChange={onChangeHandler} className={`${className}`} {...otherProps} />
-      { !value && <div className={cls.iconClean}>{<IconClean />}</div> }
+      { value && <div className={cls.iconClean} onClick={cleanInputEvent} >{<IconClean />}</div> }
     </div>
   )
 })

@@ -13,6 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
+    "@tanstack/eslint-plugin-query": "^5.43.1",
+    "@tanstack/react-query-devtools": "^5.45.0",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.18",
@@ -39,6 +41,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
+    "@tanstack/react-query": "^5.45.0",
     "axios": "^1.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

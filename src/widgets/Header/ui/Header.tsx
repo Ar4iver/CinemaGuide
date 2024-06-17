@@ -42,11 +42,17 @@ export const Header = ({ className }: HeaderProps) => {
             <Navbar className={cls.navbar} />
             <Searchbar />
           </div>
-          { data ? <AppLink className={path === '/profile' ? cls.active : ''} to={'/profile'}>{data.name}</AppLink> : <Button onClick={onShowModal}>Войти</Button>  }
+          { data ? 
+                    <AppLink className={path === '/profile' ? cls.active : ''} to={'/profile'}>
+                        {data.name}
+                    </AppLink> 
+                  : 
+                    <Button onClick={onShowModal}>
+                        Войти
+                    </Button>  
+          }
           <LoginModal isOpen={isAuthModal} onClose={onCLoseModal} />
         </div>
     </header>
   )
 }
-
-// AppLink className={path === '/genres' ? cls.active : ''}  >Жанры</AppLink>
