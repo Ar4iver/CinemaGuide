@@ -1,10 +1,10 @@
 import { movieReducer } from "./model/slice/movieSlice";
-import { Movie } from "./ui/Movie";
+import { MovieListItem } from "./ui/MovieListItem/MovieListItem";
 import { MovieSchema } from "./model/types/MovieSchema";
 
 export { 
   movieReducer,
-  Movie,
+  MovieListItem,
   MovieSchema
 }
 

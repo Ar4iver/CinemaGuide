@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useGetMovieById } from "shared/hooks/useGetMovieById"
-import { Layout } from "shared/ui/AppLink/Layout/Layout"
+import { Layout } from "shared/ui/Layout/Layout"
 import { Container } from "shared/ui/Container/ui/Container"
 import { Hero } from "widgets/Hero"
 

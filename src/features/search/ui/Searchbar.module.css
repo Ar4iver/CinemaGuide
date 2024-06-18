@@ -1,0 +1,90 @@
+.Searchbar {
+  position: relative;
+}
+
+.searchInput {
+  width: 560px;
+  height: 48px;
+  border-radius: 8px;
+  padding-left: 52px;
+  background-color: rgb(57, 59, 60);
+}
+
+.searchResults {
+  position: absolute;
+  width: 100%;
+  padding: 16px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  top: 69px;
+  background-color: var(--main-grey);
+}
+
+.resultItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 0px 10px 0px;
+}
+
+.poster {
+  width: 40px;
+  height: 60px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.genre {
+  display: flex;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.rating {
+  display: flex;
+  font: var(--font-xs);
+  color: #75C85A;
+  font-weight: bold;
+  margin-right: 8px;
+  border-radius: 16px;
+  padding: 2px 8px 2px 8px;
+  color: var(--primary-color);
+  gap: 4px;
+}
+.rating .starIcon {
+  font-size: 0px;
+}
+
+.year, .genre, .duration {
+  color: #888;
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.title {
+  color: #fff;
+}
+
+.gold {
+  background-color: var(--rating-gold);
+}
+
+.green {
+  background-color: var(--rating-green);
+}
+
+.grey {
+  background-color: var(--rating-grey);
+}
+
+.red {
+  background-color: var(--rating-red);
+}/*# sourceMappingURL=Searchbar.module.css.map */

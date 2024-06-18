@@ -11,7 +11,7 @@ const fetchMovies = async (title: string) => {
 
 export function useSearchMovies(title: string) {
   const { data, isSuccess, isError } = useQuery({
-    queryKey: ['movies', title],
+    queryKey: ['searchMovies', title],
     queryFn: () => fetchMovies(title),
     enabled: !!title,
   });

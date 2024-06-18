@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from 'shared/ui/AppLink/Layout/Layout'
+import { Layout } from 'shared/ui/Layout/Layout'
 import { Container } from 'shared/ui/Container/ui/Container'
 
 const GenresPage = () => {
