@@ -1,7 +1,7 @@
 import React from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Movie.module.scss'
-import { MovieSchema } from 'entities/Movie/model/types/MovieSchema'
+import { MovieSchema } from 'entities/Movie'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 
 interface MovieListItemProps {

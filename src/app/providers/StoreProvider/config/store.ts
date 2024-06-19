@@ -1,6 +1,5 @@
 import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 import { StateSchema } from "./StateSchema";
-import { movieReducer } from "entities/Movie/model/slice/movieSlice";
 import { userReducer } from "entities/User";
 import { useDispatch } from "react-redux";
 import { authReducer } from "features/auth/model/slice/authSlice";
@@ -12,7 +11,6 @@ import { searchReducer } from "features/search/model/slice/searchSlice";
 export function createReduxStore(initialState?: StateSchema) {
 
   const rootReducers: ReducersMapObject<StateSchema> = {
-    movie: movieReducer,
     user: userReducer,
     search: searchReducer,
     auth: authReducer,

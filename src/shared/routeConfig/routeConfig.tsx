@@ -4,6 +4,7 @@
 
 import { GenresPage } from 'pages/GenresPage'
 import { MainPage } from 'pages/MainPage'
+import { MoviesPageByGenre } from 'pages/MoviesPageByGenre'
 import { ProfilePage } from 'pages/ProfilePage'
 import SingleMoviePage from 'pages/SingleMoviePage/ui/SingleMoviePage'
 import { RouteProps } from 'react-router-dom'
@@ -12,14 +13,16 @@ export enum AppRoutes {
 	MAIN = 'main',
 	GENRES = 'genres',
 	PROFILE = 'profile',
-	SingleMovie = 'singleMovie'
+	SingleMovie = 'singleMovie',
+	MoviesPageByGenre = 'moviesPageByGenre'
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.MAIN]: '/',
 	[AppRoutes.GENRES]: '/genres',
 	[AppRoutes.PROFILE]: '/profile',
-	[AppRoutes.SingleMovie]: '/movie/:id'
+	[AppRoutes.SingleMovie]: '/movie/:id',
+	[AppRoutes.MoviesPageByGenre]: '/genres/:genre'
 }
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -38,5 +41,9 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
 	[AppRoutes.SingleMovie]: {
 		path: RoutePath.singleMovie,
 		element: <SingleMoviePage />
+	},
+	[AppRoutes.MoviesPageByGenre]: {
+		path: RoutePath.moviesPageByGenre,
+		element: <MoviesPageByGenre />
 	}
 }

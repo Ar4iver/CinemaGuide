@@ -1,0 +1,26 @@
+.details {
+  width: 500px; /* задайте ширину контейнера */
+  font-family: Arial, sans-serif;
+  color: white; /* измените на нужный цвет */
+}
+.details div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 5px 0;
+}
+.details div::before,
+.details div::after {
+  content: "";
+  flex-grow: 1;
+  border-bottom: 1px dotted #666; /* измените на нужный цвет */
+  margin: 0 10px;
+}
+.details div::after {
+  flex-grow: 0;
+}
+.details div span {
+  background-color: black; /* измените на цвет фона */
+  padding: 0 5px;
+}

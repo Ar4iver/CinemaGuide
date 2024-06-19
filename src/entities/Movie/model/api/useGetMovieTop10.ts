@@ -14,5 +14,10 @@ export function useGetMovieTop10() {
     queryFn: () => fetchMovieTop10(),
   });
 
-  return { data, isSuccess, isError, isLoading };
+  const movieTopData = data
+  const movieTopIsSuccess = isSuccess
+  const movieTopisError = isError
+  const movieTopIsLoading = isLoading
+
+  return { movieTopData, movieTopIsSuccess, movieTopisError, movieTopIsLoading };
 }

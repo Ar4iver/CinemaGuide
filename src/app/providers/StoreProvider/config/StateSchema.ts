@@ -8,7 +8,6 @@ import { ProfileDetails } from "features/profile/model/types/profileSchemas";
 import { SearchSchema } from "features/search/model/types/SearchSchema";
 
 export interface StateSchema {
-  movie: MovieDetailsSchema
   user: UserDetailsSchema
   registerForm: RegisterSchema
   loginForm: LoginSchema
