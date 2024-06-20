@@ -1,0 +1,16 @@
+.redirectFromGenres {
+  display: block;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  font: var(--font-xxl);
+  font-weight: 700;
+}
+
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+.arrowIcon {
+  font-size: 0;
+}
+}

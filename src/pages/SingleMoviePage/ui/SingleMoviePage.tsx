@@ -14,8 +14,6 @@ const SingleMoviePage = ({className}: SingleMovieProps) => {
   
   const { id } = useParams<{id: string}>()
 
-  console.log(id)
-
   if (!id) {
     return (
       <Layout>
