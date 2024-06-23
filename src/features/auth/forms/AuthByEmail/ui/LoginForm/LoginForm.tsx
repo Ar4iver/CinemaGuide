@@ -5,13 +5,13 @@ import LogoForm from 'shared/assets/icons/CinemaGuide_modal.svg'
 import EmailIcon from 'shared/assets/icons/email_icon.svg'
 import PasswordIcon from 'shared/assets/icons/password_icon.svg'
 import { Button } from 'shared/ui/Button/Button'
-import { Input } from 'shared/ui/Input/Input'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'app/providers/StoreProvider/config/store'
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
 import { loginActions } from '../../model/slice/loginSlice'
 import { loginByEmail } from '../../model/services/loginByEmail/loginByEmail'
 import { authActions } from 'features/auth/model/slice/authSlice'
+import { Input } from 'shared/ui/Input/Input'
 
 interface LoginFormProps {
   className?: string

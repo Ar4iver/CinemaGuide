@@ -1,0 +1,41 @@
+.Movie {
+  position: relative;
+  width: 100%;
+  box-shadow: 0px 0px 80px 0px rgba(255, 255, 255, 0.33);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+
+  img {
+    border-radius: 16px;
+    width: 100%;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.crossIcon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 0;
+  display: flex;
+  background-color: white;
+  padding: 14px;
+  border-radius: 30px;
+}
+
+.positionTop {
+  position: absolute;
+  top: -10px;
+  left: -17px;
+  font: var(--font-lg);
+  color: var(--secondary-color-2);
+  background-color: var(--primary-color);
+  padding: 8px 24px 8px 24px;
+  border-radius: 50px;
+}

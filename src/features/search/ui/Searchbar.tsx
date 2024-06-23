@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { getSearchState } from '../model/selectors/getSearchState/getSearchState'
 import { useAppDispatch } from 'app/providers/StoreProvider/config/store'
 import { searchActions } from '../model/slice/searchSlice'
-import { useSearchMovies } from 'shared/hooks/useSearchMovies'
+import { useSearchMovies } from 'entities/Movie'
 import { MovieSchema } from 'entities/Movie'
 import { useDebounce } from 'shared/hooks/useDebounce'
 import { formatMinutes } from 'shared/lib/helper/formatTime'
@@ -51,7 +51,7 @@ export const Searchbar = ({ className }: SearchbarProps) => {
               }
 
            return (
-              <AppLink to={`/movie/${movie.id}`} key={movie.id}>
+              <AppLink to={`/movie/${movie.id}`} onClick={cleanInputEvent} key={movie.id}>
                 <div className={cls.resultItem} >
                   <img src={movie.posterUrl} alt={movie.title} className={cls.poster} />
                   <div className={cls.details}>

@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react'
+import React, { memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Hero.module.scss'
 import Favorites from 'shared/assets/icons/hearth.svg'
@@ -26,16 +26,12 @@ interface HeroProps {
 
 export const Hero = memo(({ className, movie, refetch }: HeroProps) => {
 
-  if(!movie) {
-    return null
-  }
-
   const dispatch = useAppDispatch()
-
-  const isFavorite = useSelector((state: StateSchema) => isMovieInFavorites(state, String(movie.id)));
 
   const location = useLocation();
   const path = location.pathname;
+  
+  const isFavorite = useSelector((state: StateSchema) => isMovieInFavorites(state, String(movie.id)));
 
   const mods: Record<string, boolean> = {
     [cls.gold]: movie.tmdbRating >= 7.6 && movie.tmdbRating <= 10,
@@ -52,43 +48,43 @@ export const Hero = memo(({ className, movie, refetch }: HeroProps) => {
     dispatch(deleteFavoriteMovieById(id))
   }, [dispatch, movie.id])
 
-  return (
-    <div className={classNames(cls.Hero, {}, [className])}>
-        <div className={cls.infoMovieBanner}>
-            <div className={cls.headerInfo}>
-              <span className={classNames(cls.rating, mods, [className])}><span className={cls.starIcon}><Star /></span> {Number(movie.tmdbRating.toFixed(1))}</span>
-              <span className={cls.year}>{movie.releaseYear}</span>
-              <span className={cls.genre}>{movie.genres.join(', ')}</span>
-              <span className={cls.duration}>{formatMinutes(movie.runtime)}</span>
-            </div>
-            <div className={cls.middleInfo}>
-              <span className={cls.title}>{movie.title}</span>
-              <span className={cls.plot}>{truncateText(movie.plot, 240)}</span>
-            </div>
-            <div className={cls.actions}>
-              <Button className={cls.trailerBtnAction}>Трейлер</Button>
-              { path === '/' && <AppLink className={cls.movieLink} to={`/movie/${movie.id}`}>О фильме</AppLink>}
-              <Button onClick={() => isFavorite ? deleteFavoriteMovie(String(movie.id)) : addFavorites(String(movie.id))} className={cls.favoritesBtn}>
-                {isFavorite ? <FavoritesIconTrue /> : <Favorites />}
-              </Button>
-              { path === '/' && <Button onClick={refetch} className={cls.updateBtn}><Update /></Button>}
-            </div>
-        </div>
-        {movie.backdropUrl && movie.posterUrl && <div style={{
-            backgroundImage: `
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.5)),
-            linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
-            linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
-            url(${movie.backdropUrl})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'right',
-            backgroundRepeat: 'no-repeat',
-            position: 'absolute',
-            top: '0',
-            right: '0',
-            width: '900px',
-            height: '600px',
-        }}></div> }
-    </div>
-  )
+    return (
+      <div className={classNames(cls.Hero, {}, [className])}>
+          <div className={cls.infoMovieBanner}>
+              <div className={cls.headerInfo}>
+                <span className={classNames(cls.rating, mods, [className])}><span className={cls.starIcon}><Star /></span> {Number(movie.tmdbRating.toFixed(1))}</span>
+                <span className={cls.year}>{movie.releaseYear}</span>
+                <span className={cls.genre}>{movie.genres.join(', ')}</span>
+                <span className={cls.duration}>{formatMinutes(movie.runtime)}</span>
+              </div>
+              <div className={cls.middleInfo}>
+                <span className={cls.title}>{movie.title}</span>
+                <span className={cls.plot}>{truncateText(movie.plot, 240)}</span>
+              </div>
+              <div className={cls.actions}>
+                <Button className={cls.trailerBtnAction}>Трейлер</Button>
+                { path === '/' && <AppLink className={cls.movieLink} to={`/movie/${movie.id}`}>О фильме</AppLink>}
+                <Button onClick={() => isFavorite ? deleteFavoriteMovie(String(movie.id)) : addFavorites(String(movie.id))} className={cls.favoritesBtn}>
+                  {isFavorite ? <FavoritesIconTrue /> : <Favorites />}
+                </Button>
+                { path === '/' && <Button onClick={refetch} className={cls.updateBtn}><Update /></Button>}
+              </div>
+          </div>
+          {movie.backdropUrl && movie.posterUrl && <div style={{
+              backgroundImage: `
+              linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.5)),
+              linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
+              linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
+              url(${movie.backdropUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'right',
+              backgroundRepeat: 'no-repeat',
+              position: 'absolute',
+              top: '0',
+              right: '0',
+              width: '900px',
+              height: '600px',
+          }}></div> }
+      </div>
+    )
 })

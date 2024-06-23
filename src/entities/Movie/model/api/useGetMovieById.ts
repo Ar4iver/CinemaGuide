@@ -10,7 +10,7 @@ const fetchMovieById = async (id: string) => {
 
 export function useGetMovieById(id: string) {
   const { data, isSuccess, isError, isLoading } = useQuery({
-    queryKey: ['movie', id],
+    queryKey: ['movieById', id],
     queryFn: () => fetchMovieById(id),
     enabled: !!id,
   });

@@ -8,6 +8,7 @@ export interface ProfileSchemas {
 }
 
 export interface ProfileDetails {
+  isAuth: boolean
   data?: ProfileSchemas
   isLoading: boolean,
   error?: string,

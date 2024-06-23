@@ -1,0 +1,40 @@
+.details {
+  width: 600px;
+}
+
+h2 {
+  margin-bottom: 64px;
+}
+
+.param {
+  list-style: none;
+  font: var(--font-md);
+  font-weight: 400;
+}
+
+.param:not(:last-child) {
+  margin-bottom: 25px;
+}
+  
+.param__prop {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  color: white;
+}
+
+.param__prop:after {
+  content: '';
+  position: absolute;
+  margin-left: 10px;
+  bottom: .35em;
+  width: 100%;
+  border-bottom: 1px dashed;
+  color: rgba(255, 255, 255, 0.5);
+}
+  
+.param__value {
+  float: right;
+  padding-left: 10px;
+  color: white;
+}

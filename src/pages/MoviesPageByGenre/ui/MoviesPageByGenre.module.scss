@@ -1,0 +1,33 @@
+.redirectFromGenres {
+  display: block;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  font: var(--font-xxl);
+  font-weight: 700;
+}
+
+.Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.movieList {
+  margin-bottom: 64px;
+}
+
+.buttonMore {
+  margin: 0 auto;
+  color: var(--primary-color);
+  background-color: var(--secondary-color-2);
+  padding: 16px 48px;
+  border-radius: 28px;
+}
+
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+.arrowIcon {
+  font-size: 0;
+}
+}

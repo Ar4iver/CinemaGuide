@@ -1,20 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { MovieSchema } from "../types/MovieSchema"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { MovieDetailsSchema } from "../types/MovieDetailsSchema"
+import { MovieSchema } from "../types/MovieSchema";
 
-const initialState: MovieDetailsSchema  = {
-    isLoading: false,
-    error: undefined,
-    data: undefined,
+const initialState: MovieDetailsSchema = {
+  isLoading: false,
+  error: '',
+  data: [],
+  page: 1,
 }
 
-export const movie = createSlice({
-	name: 'movie',
-	initialState,
-	reducers: {
-
-	},
-})
-
-export const { actions: movieActions } = movie
-export const { reducer: movieReducer } = movie
+export const moviesSlice = createSlice({
+  name: 'movies',
+  initialState,
+  reducers: {
+    addMovies: (state, action: PayloadAction<MovieSchema[]>) => {
+      if (Array.isArray(action.payload)) {
+        state.data = [...state.data, ...action.payload];
+      }
+    },
+    incrementPage: (state) => {
+      state.page += 1;
+    },
+    resetMovies: (state) => {
+      state.data = [];
+      state.page = 1;
+    },
+  },
+  })
+  
+  export const { actions: moviesActions } = moviesSlice
+  export const { reducer: moviesReducer } = moviesSlice

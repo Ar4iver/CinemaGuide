@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useGetMovieById } from "shared/hooks/useGetMovieById"
-import { Layout } from "shared/ui/AppLink/Layout/Layout"
+import { useGetMovieById } from "entities/Movie"
+import { Layout } from "shared/ui/Layout/Layout"
 import { Container } from "shared/ui/Container/ui/Container"
 import { Hero } from "widgets/Hero"
+import { MovieDetails } from "../../../entities/Movie/ui/MovieDetails/MovieDetails"
 
 interface SingleMovieProps {
   className?: string
@@ -12,8 +13,6 @@ interface SingleMovieProps {
 const SingleMoviePage = ({className}: SingleMovieProps) => {
   
   const { id } = useParams<{id: string}>()
-
-  console.log(id)
 
   if (!id) {
     return (
@@ -45,6 +44,7 @@ const SingleMoviePage = ({className}: SingleMovieProps) => {
     return (
       <Layout>
         <Hero movie={data} />
+        <MovieDetails movie={data} />
       </Layout>
     );
   }

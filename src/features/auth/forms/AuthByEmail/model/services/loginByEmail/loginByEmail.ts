@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { User } from "entities/User";
 import { fetchProfile } from "features/profile/model/services/fetchProfile/fetchProfile";
+import { profileActions } from "features/profile/model/slice/profileSlice";
 
 interface loginByEmail {
   email: string
@@ -24,6 +25,7 @@ export const loginByEmail = createAsyncThunk<User, loginByEmail>(
       throw new Error()
     }
 
+    thunkApi.dispatch(profileActions.setIsAuth(true))
     thunkApi.dispatch(fetchProfile())
 
     return response.data

@@ -1,35 +1,26 @@
+import { MovieList } from 'entities/Movie/ui/MovieList/MovieList'
 import React from 'react'
-import { useGetRandomMovie } from 'shared/hooks/useGetRandomMovie'
-import { Layout } from 'shared/ui/AppLink/Layout/Layout'
+import { useGetMovieTop10, useGetRandomMovie } from 'entities/Movie'
+import { Container } from 'shared/ui/Container/ui/Container'
+import { Layout } from 'shared/ui/Layout/Layout'
 import { Hero } from 'widgets/Hero'
 
 const MainPage = () => {
 
   const { data, isError, isSuccess, isLoading, refetch } = useGetRandomMovie()
+  
+  const { movieTopIsSuccess, movieTopData, movieTopIsLoading, movieTopisError } = useGetMovieTop10()
 
-  if(isLoading) {
     return (
       <Layout>
-          Is loading....
+          {data && <Hero movie={data} refetch={refetch} />}
+          <Container>
+            <h2 style={{ marginBottom: '64px' }}>Топ 10 фильмов</h2>
+            {movieTopIsSuccess && <MovieList showTopRating={true} deleteFavoritesFn={false} data={ movieTopData } /> }
+          </Container>
       </Layout>
     )
-  }
 
-  if(isSuccess) {
-    return (
-      <Layout>
-          <Hero movie={data} refetch={refetch} />
-      </Layout>
-    )
-  }
-
-  if(isError) {
-    return (
-      <Layout>
-          Ошибка
-      </Layout>
-    )
-  }
 }
 
 export default MainPage

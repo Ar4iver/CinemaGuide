@@ -1,0 +1,16 @@
+.Tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tabLabels {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+
+.tabActive {
+  border-bottom: 1px solid var(--active-color);
+}
