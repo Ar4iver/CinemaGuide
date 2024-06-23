@@ -6,6 +6,7 @@
   --padding-container: 0 80px;
 
   --font-family-main: 'Play', sans-serif;
+  --font-weight: 400;
 
   --font-size-xs: 12px;
   --font-line-xs: 16px;
@@ -22,6 +23,7 @@
   --font-size-lg: 24px;
   --font-line-lg: 32px;
   --font-lg: var(--font-size-lg) / var(--font-line-lg) var(--font-family-main);
+  // --font-lg: var(--font-weight) var(--font-size-lg) / var(--font-line-lg) var(--font-family-main);
 
   --font-size-xl: 40px;
   --font-line-xl: 48px;

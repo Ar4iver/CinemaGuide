@@ -7,12 +7,14 @@ import { loginReducer } from "features/auth/forms/AuthByEmail";
 import { registerReducer } from "features/auth/forms/AuthByEmail/model/slice/registerSlice";
 import { profileReducer } from "features/profile/model/slice/profileSlice";
 import { searchReducer } from "features/search/model/slice/searchSlice";
+import { moviesReducer } from "entities/Movie/model/slice/movieSlice";
 
 export function createReduxStore(initialState?: StateSchema) {
 
   const rootReducers: ReducersMapObject<StateSchema> = {
     user: userReducer,
     search: searchReducer,
+    movies: moviesReducer,
     auth: authReducer,
     loginForm: loginReducer,
     registerForm: registerReducer,

@@ -10,6 +10,8 @@ import { useSelector } from 'react-redux'
 import { getProfileData } from 'features/profile/model/selectors/getProfileData/getProfileData'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { useLocation } from 'react-router-dom'
+import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
+import { getAuthData } from 'features/profile/model/selectors/getIsAuthUser/getIsAuthUser'
 
 interface HeaderProps {
   className?: string
@@ -20,7 +22,8 @@ export const Header = ({ className }: HeaderProps) => {
   const location = useLocation();
   const path = location.pathname;
 
-  const { data } = useSelector(getProfileData)
+  const { data } = useSelector((state: StateSchema) => getProfileData(state))
+  const isAuth = useSelector((state: StateSchema) => getAuthData(state))
 
   const [isAuthModal, setIsAuthModal] = useState(false)
 
@@ -32,6 +35,8 @@ export const Header = ({ className }: HeaderProps) => {
     setIsAuthModal(true)
   }, [])
 
+  console.log(data, isAuth)
+
   return (
     <header className={classNames(cls.Header, {}, [className])}>
         <div className={cls.wrapper}>
@@ -42,11 +47,11 @@ export const Header = ({ className }: HeaderProps) => {
             <Navbar className={cls.navbar} />
             <Searchbar />
           </div>
-          { data ? 
+          { isAuth && data ? 
                     <AppLink className={path === '/profile' ? cls.active : ''} to={'/profile'}>
                         {data.name}
                     </AppLink> 
-                  : 
+                  :
                     <Button onClick={onShowModal}>
                         Войти
                     </Button>  

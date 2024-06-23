@@ -13,10 +13,10 @@ const MainPage = () => {
 
     return (
       <Layout>
-          <Hero movie={data} refetch={refetch} />
+          {data && <Hero movie={data} refetch={refetch} />}
           <Container>
             <h2 style={{ marginBottom: '64px' }}>Топ 10 фильмов</h2>
-            {movieTopIsSuccess && <MovieList data={ movieTopData } /> }
+            {movieTopIsSuccess && <MovieList showTopRating={true} deleteFavoritesFn={false} data={ movieTopData } /> }
           </Container>
       </Layout>
     )

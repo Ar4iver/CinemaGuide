@@ -14,7 +14,7 @@ export enum AppRoutes {
 	GENRES = 'genres',
 	PROFILE = 'profile',
 	SingleMovie = 'singleMovie',
-	MoviesPageByGenre = 'moviesPageByGenre'
+	MoviesPageByGenre = 'moviesPageByGenre',
 }
 
 export const RoutePath: Record<AppRoutes, string> = {
@@ -22,7 +22,7 @@ export const RoutePath: Record<AppRoutes, string> = {
 	[AppRoutes.GENRES]: '/genres',
 	[AppRoutes.PROFILE]: '/profile',
 	[AppRoutes.SingleMovie]: '/movie/:id',
-	[AppRoutes.MoviesPageByGenre]: '/genres/:genre'
+	[AppRoutes.MoviesPageByGenre]: '/genres/:genre',
 }
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -45,5 +45,5 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
 	[AppRoutes.MoviesPageByGenre]: {
 		path: RoutePath.moviesPageByGenre,
 		element: <MoviesPageByGenre />
-	}
+	},
 }

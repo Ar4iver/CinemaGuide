@@ -11,12 +11,10 @@ interface GenreListProps {
 
 export const GenreList = ({ className, genres }: GenreListProps) => {
 
-  console.log(genres)
-
   return (
     <div className={classNames(cls.GenreList, {}, [className])}>
-      {genres.map((genre: string) => (
-        <AppLink to={`${genre}`}>
+      {genres.map((genre: string, index) => (
+        <AppLink to={`${genre}`} key={index}>
           <GenreListItem genre={genre} />
         </AppLink>
       ))}

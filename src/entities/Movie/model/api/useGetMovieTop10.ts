@@ -12,6 +12,7 @@ export function useGetMovieTop10() {
   const { data, isSuccess, isError, isLoading } = useQuery({
     queryKey: ['movieTop10'],
     queryFn: () => fetchMovieTop10(),
+    refetchOnWindowFocus: false,
   });
 
   const movieTopData = data

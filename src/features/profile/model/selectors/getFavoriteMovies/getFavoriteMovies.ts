@@ -9,10 +9,3 @@ export const isMovieInFavorites = createSelector(
     return favorites?.some(movie => movie === movieId )
   }
 )
-
-// export const isMovieInFavorites = createSelector(
-//   [getFavoritesMovieData, (state: StateSchema, movieId: number) => movieId],
-//   (favoriteMovies, movieId) => {
-//     return favoriteMovies.some(movie => movie.id === movieId);
-//   }
-// );

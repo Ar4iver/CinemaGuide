@@ -7,6 +7,7 @@
 
   img {
     border-radius: 16px;
+    width: 100%;
   }
 
   a {
@@ -14,6 +15,18 @@
     width: 100%;
     height: 100%;
   }
+
+}
+
+.crossIcon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 0;
+  display: flex;
+  background-color: white;
+  padding: 14px;
+  border-radius: 30px;
 }
 
 .positionTop {

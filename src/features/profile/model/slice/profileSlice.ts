@@ -8,7 +8,8 @@ import { addFavoritesMovie } from "../services/addFavoritesMovie/addFavoritesMov
 const initialState: ProfileDetails  = {
   isLoading: false,
   error: '',
-  data: undefined
+  data: undefined,
+  isAuth: false
 }
 
 export const profileSlice = createSlice({
@@ -18,29 +19,28 @@ reducers: {
   setProfile: (state, action: PayloadAction<ProfileSchemas>) => {
     state.data = action.payload
   },
+
+  setIsAuth: (state, action: PayloadAction<boolean>) => {
+    state.isAuth = action.payload
+  }
 },
 
 extraReducers: (builder) => {
   builder.addCase(fetchProfile.pending, (state, action) => {
       state.error = undefined
       state.isLoading = true
+      state.isAuth = false
   }),
   builder.addCase(fetchProfile.fulfilled, (state, action) => {
     state.isLoading = false
+    state.isAuth = true
   }),
   builder.addCase(fetchProfile.rejected, (state, action) => {
     state.isLoading = false
     /**!!!!!!!!!!!!!! */
     state.error = action.payload as string
+    state.isAuth = false
   }),
-  builder.addCase(getFavoritesMovie.pending, (state) => {
-    state.isLoading = true;
-    state.error = undefined;
-  }),
-  builder.addCase(getFavoritesMovie.rejected, (state, action) => {
-    state.isLoading = false;
-    state.error = action.payload as string;
-  });
   builder.addCase(addFavoritesMovie.pending, (state) => {
     state.error = undefined
     state.isLoading = true

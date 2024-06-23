@@ -1,0 +1,52 @@
+.settingInfoUser {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.user, .email {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.nameSpaceTitle {
+  font: var(--font-md);
+  font-weight: 400;
+}
+
+.nameSpaceValue {
+  font: var(--font-lg);
+  font-weight: 700;
+}
+
+.userEmail {
+  svg {
+    font-size: 0;
+    background-color: var(--grey-opacity-50);
+    padding: 20px;
+    border-radius: 20px;
+  }
+}
+
+.usernameAbr {
+  display: inline-block;
+  font: var(--font-lg);
+  font-weight: 700;
+  background-color: var(--grey-opacity-50);
+  padding: 14px;
+  border-radius: 30px;
+}
+
+.actionBtn {
+  background-color: var(--secondary-color-2);
+  padding: 16px 48px;
+  border-radius: 28px;
+  font: var(--font-md);
+  font-weight: 700;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}

@@ -11,6 +11,7 @@ export interface StateSchema {
   user: UserDetailsSchema
   registerForm: RegisterSchema
   loginForm: LoginSchema
+  movies: MovieDetailsSchema
   auth: AuthSchema
   profile: ProfileDetails
   search: SearchSchema

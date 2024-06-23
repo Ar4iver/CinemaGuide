@@ -3,5 +3,6 @@ import { MovieSchema } from "./MovieSchema";
 export interface MovieDetailsSchema {
   isLoading: boolean,
   error?: string,
-  data?: MovieSchema,
+  data: MovieSchema[],
+  page: number
 }

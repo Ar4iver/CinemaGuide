@@ -10,7 +10,8 @@ interface GenreListItemProps {
 export const GenreListItem = ({ className, genre }: GenreListItemProps) => {
   return (
     <div className={classNames(cls.GenreListItem, {}, [className])}>
-      {genre}
+      <div className={cls.imgWrapper}><img src="https://via.placeholder.com/250x200" alt="" /></div>
+      <div>{genre}</div>
     </div>
   )
 }

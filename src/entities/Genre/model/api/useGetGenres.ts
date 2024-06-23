@@ -12,6 +12,7 @@ export function useGetGenres() {
   const { data, isSuccess, isError, isLoading } = useQuery({
     queryKey: ['genres'],
     queryFn: () => fetchGenres(),
+    refetchOnWindowFocus: false,
   });
 
   const genres = data
