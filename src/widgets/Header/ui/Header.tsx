@@ -35,14 +35,12 @@ export const Header = ({ className }: HeaderProps) => {
     setIsAuthModal(true)
   }, [])
 
-  console.log(data, isAuth)
-
   return (
     <header className={classNames(cls.Header, {}, [className])}>
         <div className={cls.wrapper}>
-          <div className={cls.Logo}>
+          <AppLink to={`/`} className={cls.Logo}>
             <Logo />
-          </div>
+          </AppLink>
           <div className={cls.middle}>
             <Navbar className={cls.navbar} />
             <Searchbar />

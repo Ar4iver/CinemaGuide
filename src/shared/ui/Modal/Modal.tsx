@@ -8,6 +8,7 @@ import { Portal } from '../Portal/Portal';
 interface ModalProps {
     className?: string;
     children?: ReactNode;
+    isBackground: boolean
     isOpen?: boolean;
     onClose?: () => void;
     lazy?: boolean;
@@ -19,6 +20,7 @@ export const Modal = (props: ModalProps) => {
         children,
         isOpen,
         onClose,
+        isBackground,
         lazy,
     } = props;
 
@@ -57,7 +59,7 @@ export const Modal = (props: ModalProps) => {
         };
     }, [isOpen, onKeyDown]);
 
-    const mods: Record<string, boolean | undefined> = {
+    const mods: Record<string, boolean | string | undefined> = {
         [cls.opened]: isOpen,
         [cls.isClosing]: isClosing,
     };
@@ -71,7 +73,7 @@ export const Modal = (props: ModalProps) => {
             <div className={classNames(cls.Modal, mods, [className])}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div
-                        className={cls.content}
+                        className={classNames(cls.content, {[cls.background]: isBackground}, [])}
                         onClick={onContentClick}
                     >
                         {children}

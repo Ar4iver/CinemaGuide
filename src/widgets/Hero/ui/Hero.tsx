@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react'
+import React, { memo, useCallback, useEffect, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Hero.module.scss'
 import Favorites from 'shared/assets/icons/hearth.svg'
@@ -17,6 +17,8 @@ import { useSelector } from 'react-redux'
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
 import { isMovieInFavorites } from 'features/profile/model/selectors/getFavoriteMovies/getFavoriteMovies'
 import { deleteFavoriteMovieById } from 'features/profile/model/services/deleteFavoriteMovieById/deleteFavoriteMovieById'
+import { VideoPlayerModal } from 'features/video-player'
+import { fetchProfile } from 'features/profile/model/services/fetchProfile/fetchProfile'
 
 interface HeroProps {
   className?: string
@@ -25,6 +27,16 @@ interface HeroProps {
 }
 
 export const Hero = memo(({ className, movie, refetch }: HeroProps) => {
+
+  const [isViewVideo, setIsViewVideo] = useState(false)
+
+  const onCLoseModal = useCallback(() => {
+    setIsViewVideo(false)
+  }, [])
+
+  const onShowModal = useCallback(() => {
+    setIsViewVideo(true)
+  }, [])
 
   const dispatch = useAppDispatch()
 
@@ -44,13 +56,17 @@ export const Hero = memo(({ className, movie, refetch }: HeroProps) => {
     dispatch(addFavoritesMovie(id))
   }, [dispatch, movie.id])
 
-  const deleteFavoriteMovie = useCallback((id: string) => {
-    dispatch(deleteFavoriteMovieById(id))
+  const deleteFavoriteMovie = useCallback(async(id: string) => {
+    await dispatch(deleteFavoriteMovieById(id))
   }, [dispatch, movie.id])
+
+  const openTrailerFilmModal = useCallback(() => {
+    onShowModal()
+  }, [])
 
     return (
       <div className={classNames(cls.Hero, {}, [className])}>
-          <div className={cls.infoMovieBanner}>
+          <div className={classNames(cls.infoMovieBanner, { [cls.slideDown]: true }, [])}>
               <div className={cls.headerInfo}>
                 <span className={classNames(cls.rating, mods, [className])}><span className={cls.starIcon}><Star /></span> {Number(movie.tmdbRating.toFixed(1))}</span>
                 <span className={cls.year}>{movie.releaseYear}</span>
@@ -62,7 +78,7 @@ export const Hero = memo(({ className, movie, refetch }: HeroProps) => {
                 <span className={cls.plot}>{truncateText(movie.plot, 240)}</span>
               </div>
               <div className={cls.actions}>
-                <Button className={cls.trailerBtnAction}>Трейлер</Button>
+                <Button onClick={() => openTrailerFilmModal()} className={cls.trailerBtnAction}>Трейлер</Button>
                 { path === '/' && <AppLink className={cls.movieLink} to={`/movie/${movie.id}`}>О фильме</AppLink>}
                 <Button onClick={() => isFavorite ? deleteFavoriteMovie(String(movie.id)) : addFavorites(String(movie.id))} className={cls.favoritesBtn}>
                   {isFavorite ? <FavoritesIconTrue /> : <Favorites />}
@@ -70,21 +86,27 @@ export const Hero = memo(({ className, movie, refetch }: HeroProps) => {
                 { path === '/' && <Button onClick={refetch} className={cls.updateBtn}><Update /></Button>}
               </div>
           </div>
-          {movie.backdropUrl && movie.posterUrl && <div style={{
-              backgroundImage: `
-              linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.5)),
-              linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
-              linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
-              url(${movie.backdropUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'right',
-              backgroundRepeat: 'no-repeat',
-              position: 'absolute',
-              top: '0',
-              right: '0',
-              width: '900px',
-              height: '600px',
-          }}></div> }
+          {movie.backdropUrl && movie.posterUrl && (
+        <div 
+          className={classNames(cls.fadeInImage)}
+          style={{
+            backgroundImage: `
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.5)),
+            linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
+            linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5)),
+            url(${movie.backdropUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'right',
+            backgroundRepeat: 'no-repeat',
+            position: 'absolute',
+            top: '0',
+            right: '0',
+            width: '900px',
+            height: '600px',
+          }}
+        ></div>
+      )}
+          <VideoPlayerModal trailerUrl={movie.trailerUrl} trailerId={movie.trailerYouTubeId} isOpen={isViewVideo} onClose={onCLoseModal} />
       </div>
     )
 })

@@ -9,7 +9,7 @@ const fetchMovieTop10 = async () => {
 }
 
 export function useGetMovieTop10() {
-  const { data, isSuccess, isError, isLoading } = useQuery({
+  const { data, isSuccess, isError, isLoading, isFetching, isRefetching } = useQuery({
     queryKey: ['movieTop10'],
     queryFn: () => fetchMovieTop10(),
     refetchOnWindowFocus: false,
@@ -19,6 +19,8 @@ export function useGetMovieTop10() {
   const movieTopIsSuccess = isSuccess
   const movieTopisError = isError
   const movieTopIsLoading = isLoading
+  const movieIsFetchingData = isFetching
+  const isRefetchingMovie = isRefetching
 
-  return { movieTopData, movieTopIsSuccess, movieTopisError, movieTopIsLoading };
+  return { movieTopData, movieTopIsSuccess, movieTopisError, movieTopIsLoading, movieIsFetchingData, isRefetchingMovie };
 }

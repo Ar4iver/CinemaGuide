@@ -39,7 +39,7 @@ export function useGetMoviesByGenre(genre: string) {
   const dispatch = useAppDispatch()
   const page = useSelector((state: StateSchema) => state.movies.page);
 
-  const { data, isSuccess, isError, refetch } = useQuery({
+  const { data, isSuccess, isError, refetch, isFetching } = useQuery({
     queryKey: ['getMoviesByGenre', genre, page],
     queryFn: () => fetchMovies(genre, page, 15),
     placeholderData: keepPreviousData,
@@ -50,5 +50,5 @@ export function useGetMoviesByGenre(genre: string) {
     dispatch(moviesActions.addMovies(data));
   }, [dispatch, data, isSuccess])
 
-  return { data, isSuccess, isError, refetch, page };
+  return { data, isSuccess, isError, refetch, page, isFetching };
 }

@@ -15,7 +15,6 @@ import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
 import { Button } from 'shared/ui/Button/Button'
 import { logout } from 'features/auth/forms/AuthByEmail/model/services/logout/logout'
 import { fetchProfile } from 'features/profile/model/services/fetchProfile/fetchProfile'
-import { getAuthData } from 'features/profile/model/selectors/getIsAuthUser/getIsAuthUser'
 
 const ProfilePage = () => {
 
@@ -58,6 +57,7 @@ const ProfilePage = () => {
   ], [favoritesMovieData, favoritesMovieIsLoading, favoritesMovieIsSuccess]);
 
   const [currentTab, setCurrentTab] = useState<string>(typeTabs[0].value as string);
+
 
   const handleLogout = useCallback(async() => {
     await dispatch(logout())

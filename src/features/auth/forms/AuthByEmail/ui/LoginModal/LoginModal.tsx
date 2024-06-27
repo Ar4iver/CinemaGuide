@@ -18,7 +18,7 @@ export const LoginModal = ({ className, isOpen, onClose }: LoginModalProps) => {
   const { form } = useSelector(getAuthState)
 
   return (
-    <Modal className={classNames(cls.LoginModal, {}, [className])} isOpen={isOpen} onClose={onClose} lazy>
+    <Modal className={classNames(cls.LoginModal, {}, [className])} isBackground={true} isOpen={isOpen} onClose={onClose} lazy>
        <Suspense fallback={"Loading ..."}>
         {form === 'login' ? <LoginFormAsync  />  : <RegisterFormAsync /> }
        </Suspense>

@@ -9,7 +9,7 @@
 
 .infoMovieBanner {
   height: 100%;
-  width: 50%;
+  width: 60%;
   z-index: 1;
 }
 
@@ -96,4 +96,32 @@
 
 .updateBtn.spin {
   animation: spin 1s linear;
+}
+
+@keyframes fadeInAnimImage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeInImage {
+  animation: fadeInAnimImage 4s ease-in-out;
+}
+
+@keyframes slideDownAnim {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slideDown {
+  animation: slideDownAnim 0.5s ease-in-out;
 }

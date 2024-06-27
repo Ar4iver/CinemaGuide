@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { fetchProfile } from "../fetchProfile/fetchProfile";
 
 export const deleteFavoriteMovieById = createAsyncThunk<{ id: string }, string>(
   'profile/deleteFavoriteMovieById',
@@ -11,6 +12,8 @@ export const deleteFavoriteMovieById = createAsyncThunk<{ id: string }, string>(
     if(!response.data) {
       throw new Error()
     }
+
+    thunkApi.dispatch(fetchProfile())
 
     return response.data;
     } catch (error) {

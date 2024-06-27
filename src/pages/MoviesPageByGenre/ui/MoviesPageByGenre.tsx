@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './MoviesPageByGenre.module.scss'
 import Arrow from 'shared/assets/icons/arrow_genre.svg'
+import Loader from 'shared/assets/icons/loader.svg'
 import { Layout } from 'shared/ui/Layout/Layout'
 import { Container } from 'shared/ui/Container/ui/Container'
 import { MovieList } from 'entities/Movie/ui/MovieList/MovieList'
@@ -36,7 +37,7 @@ const MoviesPageByGenre = ({ className }: MoviesPageByGenreProps) => {
 
   const dispatch = useAppDispatch();
   const movies = useSelector((state: StateSchema) => state.movies.data);
-  const { isSuccess, refetch } = useGetMoviesByGenre(genre!);
+  const { isSuccess, refetch, isFetching, data } = useGetMoviesByGenre(genre!);
 
   const genreH2 = genre!.charAt(0).toUpperCase() + genre!.slice(1)
 
@@ -62,7 +63,7 @@ const MoviesPageByGenre = ({ className }: MoviesPageByGenreProps) => {
           {isSuccess && <MovieList deleteFavoritesFn={false} showTopRating={false} data={movies} />}
         </div>
         </div>
-        <Button onClick={handleShowMore} className={cls.buttonMore}>Показать ещё</Button>
+        <Button disabled={isFetching} onClick={handleShowMore} className={cls.buttonMore}>{isFetching ? <span className={cls.loaderIcon}><Loader /></span> : `Показать ещё`}</Button>
       </Container>
     </Layout>
   )

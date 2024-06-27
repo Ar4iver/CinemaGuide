@@ -3,16 +3,17 @@ import cls from './GenresPage.module.scss'
 import { Layout } from 'shared/ui/Layout/Layout'
 import { Container } from 'shared/ui/Container/ui/Container'
 import { GenreList, useGetGenres } from 'entities/Genre'
+import { GenresListSkeleton } from 'entities/Genre/ui/GenreList/GenresListSkeleton'
 
 const GenresPage = () => {
 
-  const { genres, isErrorDataGenres, isLoadingDataGenres, isSuccessDataGenres } = useGetGenres()
+  const { dataGenres, isErrorDataGenres, isLoadingDataGenres, isSuccessDataGenres } = useGetGenres()
 
   return (
     <Layout>
      <Container>
         <h2 className={cls.titlePage}>Жанры фильмов</h2>
-        { !isLoadingDataGenres && <GenreList genres={genres} /> }
+        { isLoadingDataGenres ? <GenresListSkeleton howManySkeletonItem={7} /> :  isSuccessDataGenres && <GenreList genres={dataGenres} /> }
      </Container>
     </Layout>
   )
