@@ -12,6 +12,8 @@ export const getFavoritesMovie = createAsyncThunk<MovieSchema[], void>(
       throw new Error()
     }
 
+    console.log(response.data)
+
     return response.data
     } catch (error) {
       console.log(error)

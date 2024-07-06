@@ -9,11 +9,19 @@ const fetchRandomMovie = async () => {
 }
 
 export function useGetRandomMovie() {
-  const { data, isSuccess, isError, isLoading, refetch } = useQuery({
+  const { data, isSuccess, isError, isLoading, refetch, isFetching } = useQuery({
     queryKey: ['movieRandom'],
     queryFn: () => fetchRandomMovie(),
     refetchOnWindowFocus: false,
   });
 
-  return { data, isSuccess, isError, isLoading, refetch };
+
+  const randomMovieData = data
+  const randomMovieIsSuccess = isSuccess
+  const randomMovieIsError = isError
+  const randomMovieIsLoading = isLoading
+  const randomMovieFetching = isFetching
+  const randomMovieRefetch = refetch
+
+  return { randomMovieData, randomMovieIsSuccess, randomMovieIsError, randomMovieIsLoading, randomMovieFetching, randomMovieRefetch };
 }

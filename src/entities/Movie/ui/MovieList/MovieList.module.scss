@@ -1,7 +1,6 @@
 .MovieList {
-  // max-width: var(--width-container);
-  // margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, 224px);
+  grid-auto-rows: 336px;
   gap: 40px;
 }

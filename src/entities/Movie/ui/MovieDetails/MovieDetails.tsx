@@ -38,12 +38,6 @@ export const MovieDetails = ({ className, movie }: MovieDetailsProps) => {
               <span className={cls.param__prop}>Награды</span>
             </li>
           </ul>
-          {/* <div><span>Язык оригинала</span><span>{movie.language}</span></div>
-          <div><span>Бюджет</span><span>{movie.budget}</span></div>
-          <div><span>Выручка</span><span>{movie.revenue}</span></div>
-          <div><span>Режиссёр</span><span>{movie.director}</span></div>
-          <div><span>Продакшен</span><span>{movie.production}</span></div>
-          <div><span>Награды</span><span>{movie.awardsSummary}</span></div> */}
     </div>
   )
 }

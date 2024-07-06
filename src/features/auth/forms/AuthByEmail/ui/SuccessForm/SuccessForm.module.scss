@@ -1,0 +1,39 @@
+.SuccessForm {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  padding: 64px 40px 64px 40px;
+  border-radius: 24px;
+  background-color: white;
+  text-align: center;
+  position: relative; 
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+
+h2 {
+  font: var(--font-lg);
+  font-weight: 700;
+  margin-bottom: 40px !important
+}
+
+p {
+  margin: 0;
+  margin-bottom: 24px;
+  font: var(--font-md);
+}
+
+.loginButton {
+  width: 100%;
+  background-color: #a76cef;
+  color: white;
+  border: none;
+  font: var(--font-md);
+  border-radius: 28px;
+  margin-top: 10px;
+  padding: 16px 0px 16px 0;
+  cursor: pointer;
+  font-weight: 700;
+}

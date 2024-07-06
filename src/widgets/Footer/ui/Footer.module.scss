@@ -1,5 +1,23 @@
 .Footer {
-  max-width: 1440px;
-  padding-left: 80px;
-  padding-right: 80px;
+  width: 100%;
+  padding: 48px 80px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: var(--width-container);
+}
+
+.leftContent {
+  display: flex;
+  gap: 14px;
+}
+
+.rightContent {
+  display: flex;
+  gap: 24px;
 }

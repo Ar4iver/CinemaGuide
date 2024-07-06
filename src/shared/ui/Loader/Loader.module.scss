@@ -1,0 +1,25 @@
+.Loader {
+  width: 50px;
+  height: 50px;
+  position: fixed; /* Чтобы компонент всегда был на экране */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Чтобы центрировать компонент */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.LoaderIcon {
+  font-size: 0;
+  animation: spin 1s linear infinite; /* Вращение иконки */
+}

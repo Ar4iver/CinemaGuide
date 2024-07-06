@@ -1,14 +1,11 @@
 import React, { useCallback } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import cls from './Movie.module.scss'
-import { MovieSchema } from 'entities/Movie'
+import cls from './MovieCard.module.scss'
+import { MovieSchema, useGetfavoritesMovie } from 'entities/Movie'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import CrossIcon from 'shared/assets/icons/cross_icon.svg'
 import { useAppDispatch } from 'app/providers/StoreProvider/config/store'
-import { deleteFavoriteMovieById } from 'features/profile/model/services/deleteFavoriteMovieById/deleteFavoriteMovieById'
-import { fetchProfile } from 'features/profile/model/services/fetchProfile/fetchProfile'
-import { getFavoritesMovie } from 'features/profile/model/services/getFavoritesMovies/getFavoritesMovies'
-import { useGetfavoritesMovie } from 'entities/Movie/model/api/useGetFavoritesMovie'
+import { deleteFavoriteMovieById } from 'features/profile'
 
 interface MovieListItemProps {
   movie: MovieSchema
@@ -22,12 +19,12 @@ export const MovieListItem = ({ className, movie, showTopRating, index, deleteFa
 
   const dispatch = useAppDispatch()
 
-  const { refetch } = useGetfavoritesMovie()
+  const { favoritesMovieRefetch } = useGetfavoritesMovie()
 
   const handleDelete = useCallback(async () => {
       await dispatch(deleteFavoriteMovieById(String(movie.id)))
-      refetch()
-  }, [dispatch, movie, refetch])
+      favoritesMovieRefetch
+  }, [dispatch, movie, favoritesMovieRefetch])
 
   return (
     <div className={classNames(cls.Movie, {}, [className])}>

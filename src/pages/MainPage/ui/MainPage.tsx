@@ -1,26 +1,32 @@
 import { MovieList } from 'entities/Movie/ui/MovieList/MovieList'
 import React from 'react'
-import { useGetMovieTop10, useGetRandomMovie } from 'entities/Movie'
+import { MovieListSkeleton, useGetMovieTop10, useGetRandomMovie } from 'entities/Movie'
 import { Container } from 'shared/ui/Container/ui/Container'
 import { Layout } from 'shared/ui/Layout/Layout'
-import { Hero } from 'widgets/Hero'
+import { Hero, HeroSkeleton } from 'widgets/Hero'
+import cls from './MainPage.module.scss'
 
 const MainPage = () => {
 
-  const { data, isError, isSuccess, isLoading, refetch } = useGetRandomMovie()
+  const { randomMovieData, randomMovieFetching, randomMovieIsLoading, randomMovieIsSuccess, randomMovieRefetch, randomMovieIsError } = useGetRandomMovie()
   
-  const { movieTopIsSuccess, movieTopData, movieTopIsLoading, movieTopisError } = useGetMovieTop10()
+  const { movieTopIsSuccess, movieTopData, movieTopIsLoading, movieTopisError, movieIsFetchingData} = useGetMovieTop10()
 
     return (
       <Layout>
-          {data && <Hero movie={data} refetch={refetch} />}
           <Container>
-            <h2 style={{ marginBottom: '64px' }}>Топ 10 фильмов</h2>
-            {movieTopIsSuccess && <MovieList showTopRating={true} deleteFavoritesFn={false} data={ movieTopData } /> }
+            {randomMovieIsLoading || randomMovieFetching ? <HeroSkeleton /> : ( randomMovieIsSuccess && <Hero movie={randomMovieData} refetch={randomMovieRefetch} />)}
+              {randomMovieIsError && <div>Произошла ошибка при получении фильма, перезагрузите страницу</div>}
+              <h2 className={cls.titleSection}>Топ 10 фильмов</h2>
+              {movieTopIsLoading || movieIsFetchingData ? (
+                  <MovieListSkeleton howManySkeletonItem={10} />
+                  ) : (
+                    movieTopIsSuccess &&  <MovieList showTopRating={true} deleteFavoritesFn={false} data={movieTopData} />
+              )}
+              {movieTopisError && <div>Произошла ошибка при получении фильмов, перезагрузите страницу</div>}
           </Container>
       </Layout>
     )
-
 }
 
 export default MainPage

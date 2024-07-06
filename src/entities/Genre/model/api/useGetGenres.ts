@@ -9,16 +9,18 @@ const fetchGenres = async () => {
 }
 
 export function useGetGenres() {
-  const { data, isSuccess, isError, isLoading } = useQuery({
+  const { data, isSuccess, isError, isLoading, isFetching} = useQuery({
     queryKey: ['genres'],
     queryFn: () => fetchGenres(),
     refetchOnWindowFocus: false,
+    staleTime: 34000,
   });
 
-  const genres = data
+  const dataGenres = data
   const isSuccessDataGenres = isSuccess
   const isLoadingDataGenres = isLoading
   const isErrorDataGenres = isError
+  const isFetchingDataGenres = isFetching
 
-  return { genres, isSuccessDataGenres, isErrorDataGenres, isLoadingDataGenres };
+  return { dataGenres, isSuccessDataGenres, isErrorDataGenres, isLoadingDataGenres, isFetchingDataGenres };
 }

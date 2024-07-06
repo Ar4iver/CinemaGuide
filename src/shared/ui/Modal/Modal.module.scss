@@ -5,7 +5,6 @@
   right: 0;
   left: 0;
   z-index: -1;
-
   opacity: 0;
   pointer-events: none;
 }
@@ -20,14 +19,30 @@
 }
 
 .content {
-  background-color: white;
+  position: relative;
   border-radius: 24px;
   max-width: 60%;
   color: black;
+}
+
+.background {
+  background-color: white;
 }
 
 .opened {
   pointer-events: auto;
   opacity: 1;
   z-index: 10;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: -60px;
+
+  svg {
+    background-color: white;
+    border-radius: 24px;
+    padding: 15px;
+  }
 }
