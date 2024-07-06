@@ -2,19 +2,17 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Layout } from 'shared/ui/Layout/Layout'
 import { Container } from 'shared/ui/Container/ui/Container'
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs'
-import { MovieList } from 'entities/Movie/ui/MovieList/MovieList'
 import { useNavigate } from "react-router-dom";
 import cls from './ProfilePage.module.scss'
 import HumanIcon from 'shared/assets/icons/human_icon.svg'
 import EmailIcon from 'shared/assets/icons/email_icon.svg'
-import { useGetfavoritesMovie } from 'entities/Movie/model/api/useGetFavoritesMovie'
 import { useAppDispatch } from 'app/providers/StoreProvider/config/store'
 import { useSelector } from 'react-redux'
-import { getProfileData } from 'features/profile/model/selectors/getProfileData/getProfileData'
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
 import { Button } from 'shared/ui/Button/Button'
-import { logout } from 'features/auth/forms/AuthByEmail/model/services/logout/logout'
-import { fetchProfile } from 'features/profile/model/services/fetchProfile/fetchProfile'
+import { logout } from 'features/auth/forms/AuthByEmail'
+import { fetchProfile, getProfileData } from 'features/profile'
+import { MovieList, useGetfavoritesMovie } from 'entities/Movie'
 
 const ProfilePage = () => {
 
@@ -24,9 +22,13 @@ const ProfilePage = () => {
 
   const { data } = useSelector((state: StateSchema) => getProfileData(state))
 
-  const { favoritesMovieData, favoritesMovieIsLoading, favoritesMovieIsSuccess, favoritesMovieisError } = useGetfavoritesMovie()
+  const { favoritesMovieData, favoritesMovieIsLoading, favoritesMovieIsSuccess } = useGetfavoritesMovie()
 
   const typeTabs = useMemo<TabItem[]>(() => [
+    {
+      value: <span>Избранные фильмы</span>,
+      content: [favoritesMovieData && favoritesMovieData.length > 0 ? <MovieList showTopRating={false} data={favoritesMovieData} deleteFavoritesFn={true} /> : <div>Нет избранных фильмов</div>],
+    },
     {
       value: <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><HumanIcon />Настройки акканта</span>,
       content: 
@@ -50,11 +52,7 @@ const ProfilePage = () => {
         </div>
       </div>,
     },
-    {
-      value: 'Избранные фильмы',
-      content: [favoritesMovieData && favoritesMovieData.length > 0 ? <MovieList key={1234} showTopRating={false} data={favoritesMovieData} deleteFavoritesFn={true} /> : <div>Нет избранных фильмов</div>],
-    },
-  ], [favoritesMovieData, favoritesMovieIsLoading, favoritesMovieIsSuccess]);
+  ], [ favoritesMovieIsLoading, favoritesMovieIsSuccess, favoritesMovieData ]);
 
   const [currentTab, setCurrentTab] = useState<string>(typeTabs[0].value as string);
 

@@ -17,24 +17,6 @@ export const VideoPlayer = ({ className, trailerUrl, trailerId }: VideoPlayerPro
     playerRef.current = event.target
   };
 
-  const playVideo = () => {
-    if (playerRef.current) {
-      playerRef.current.playVideo();
-    }
-  };
-
-  const pauseVideo = () => {
-    if (playerRef.current) {
-      playerRef.current.pauseVideo();
-    }
-  };
-
-  const stopVideo = () => {
-    if (playerRef.current) {
-      playerRef.current.stopVideo();
-    }
-  };
-
   const url = trailerId ? `https://www.youtube.com/embed/${trailerId}?start=8` : trailerUrl ? trailerUrl : null;
   console.log(url);
 
@@ -62,11 +44,6 @@ export const VideoPlayer = ({ className, trailerUrl, trailerId }: VideoPlayerPro
             opts={opts}
             onReady={onPlayerReady}
           />
-          <div className="controls">
-            <button onClick={playVideo}>Play</button>
-            <button onClick={pauseVideo}>Pause</button>
-            <button onClick={stopVideo}>Stop</button>
-          </div>
         </div>
       ) : (
         <p>Invalid YouTube URL</p>

@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useGetMovieById } from "entities/Movie"
+import { MovieDetails, useGetMovieById } from "entities/Movie"
 import { Layout } from "shared/ui/Layout/Layout"
 import { Container } from "shared/ui/Container/ui/Container"
 import { Hero } from "widgets/Hero"
-import { MovieDetails } from "../../../entities/Movie/ui/MovieDetails/MovieDetails"
+import { Loader } from "shared/ui/Loader/Loader"
 
 interface SingleMovieProps {
   className?: string
@@ -26,9 +26,7 @@ const SingleMoviePage = ({className}: SingleMovieProps) => {
 
   if (isLoading) {
     return (
-      <Layout>
-        <Container>Загрузка...</Container>
-      </Layout>
+      <Loader />
     );
   }
 

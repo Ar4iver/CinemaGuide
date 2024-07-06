@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 import { User } from "entities/User"
+import { authActions } from "features/auth/model/slice/authSlice"
 
 interface registerUser {
   email: string
@@ -20,6 +21,8 @@ export const registerUser = createAsyncThunk<User, registerUser>(
     if(!response.data) {
       throw new Error()
     } 
+
+    thunkApi.dispatch(authActions.setFormType('success'))
 
     return response.data
     } catch (error) {

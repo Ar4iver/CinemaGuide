@@ -2,8 +2,7 @@ import React from 'react'
 import cls from './GenresPage.module.scss'
 import { Layout } from 'shared/ui/Layout/Layout'
 import { Container } from 'shared/ui/Container/ui/Container'
-import { GenreList, useGetGenres } from 'entities/Genre'
-import { GenresListSkeleton } from 'entities/Genre/ui/GenreList/GenresListSkeleton'
+import { GenreList, GenresListSkeleton, useGetGenres } from 'entities/Genre'
 
 const GenresPage = () => {
 

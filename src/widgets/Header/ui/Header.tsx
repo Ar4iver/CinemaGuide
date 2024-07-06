@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Header.module.scss'
 import Logo from 'shared/assets/icons/CinemaGuide.svg'
@@ -7,11 +7,10 @@ import { Searchbar } from 'features/search'
 import { Button } from 'shared/ui/Button/Button'
 import { LoginModal } from 'features/auth/forms/AuthByEmail'
 import { useSelector } from 'react-redux'
-import { getProfileData } from 'features/profile/model/selectors/getProfileData/getProfileData'
 import { AppLink } from 'shared/ui/AppLink/AppLink'
 import { useLocation } from 'react-router-dom'
 import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
-import { getAuthData } from 'features/profile/model/selectors/getIsAuthUser/getIsAuthUser'
+import { getAuthData, getProfileData } from 'features/profile'
 
 interface HeaderProps {
   className?: string
@@ -35,6 +34,10 @@ export const Header = ({ className }: HeaderProps) => {
     setIsAuthModal(true)
   }, [])
 
+  useEffect(() => {
+    onCLoseModal()
+  }, [isAuth])
+
   return (
     <header className={classNames(cls.Header, {}, [className])}>
         <div className={cls.wrapper}>
@@ -45,7 +48,7 @@ export const Header = ({ className }: HeaderProps) => {
             <Navbar className={cls.navbar} />
             <Searchbar />
           </div>
-          { isAuth && data ? 
+          { isAuth && data ?
                     <AppLink className={path === '/profile' ? cls.active : ''} to={'/profile'}>
                         {data.name}
                     </AppLink> 

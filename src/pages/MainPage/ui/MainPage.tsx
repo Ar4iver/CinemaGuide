@@ -1,10 +1,10 @@
 import { MovieList } from 'entities/Movie/ui/MovieList/MovieList'
 import React from 'react'
-import { useGetMovieTop10, useGetRandomMovie } from 'entities/Movie'
+import { MovieListSkeleton, useGetMovieTop10, useGetRandomMovie } from 'entities/Movie'
 import { Container } from 'shared/ui/Container/ui/Container'
 import { Layout } from 'shared/ui/Layout/Layout'
 import { Hero, HeroSkeleton } from 'widgets/Hero'
-import MovieListSkeleton from 'entities/Movie/ui/MovieList/MovieListSkeleton'
+import cls from './MainPage.module.scss'
 
 const MainPage = () => {
 
@@ -17,7 +17,7 @@ const MainPage = () => {
           <Container>
             {randomMovieIsLoading || randomMovieFetching ? <HeroSkeleton /> : ( randomMovieIsSuccess && <Hero movie={randomMovieData} refetch={randomMovieRefetch} />)}
               {randomMovieIsError && <div>Произошла ошибка при получении фильма, перезагрузите страницу</div>}
-              <h2 style={{ marginBottom: '64px' }}>Топ 10 фильмов</h2>
+              <h2 className={cls.titleSection}>Топ 10 фильмов</h2>
               {movieTopIsLoading || movieIsFetchingData ? (
                   <MovieListSkeleton howManySkeletonItem={10} />
                   ) : (
@@ -27,7 +27,6 @@ const MainPage = () => {
           </Container>
       </Layout>
     )
-
 }
 
 export default MainPage

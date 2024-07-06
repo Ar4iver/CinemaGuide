@@ -1,6 +1,7 @@
 import axios from "axios"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { fetchProfile } from "../fetchProfile/fetchProfile"
+import { getFavoritesMovie } from "../getFavoritesMovies/getFavoritesMovies";
 
 interface ResponseResult {
   result: boolean

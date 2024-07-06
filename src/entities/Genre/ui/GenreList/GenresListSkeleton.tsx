@@ -18,5 +18,3 @@ export const GenresListSkeleton = ({ className, howManySkeletonItem }: GenresLis
     </div>
   );
 };
-
-export default GenresListSkeleton;

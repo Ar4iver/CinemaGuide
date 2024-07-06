@@ -9,7 +9,7 @@ export const authSlice = createSlice({
 name: 'auth',
 initialState,
 reducers: {
-  setFormType: (state, action: PayloadAction<'login' | 'register'>) => {
+  setFormType: (state, action: PayloadAction<'login' | 'register' | 'success'>) => {
       state.form = action.payload;
   },
 },

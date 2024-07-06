@@ -1,11 +1,11 @@
-import React, { Suspense, useState } from 'react'
+import React, { ReactNode, Suspense, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './LoginModal.module.scss'
 import { Modal } from 'shared/ui/Modal/Modal'
 import { useSelector } from 'react-redux'
 import { getAuthState } from 'features/auth/model/selectors/getAuthState/getAuthState'
-import { LoginFormAsync } from '../LoginForm/LoginForm.async'
-import { RegisterFormAsync } from '../RegisterForm/RegisterForm.async'
+import { TypeAuth, typeModalConfig } from '../../model/config/config'
+import Loader from 'shared/assets/icons/loader_2.svg'
 
 interface LoginModalProps {
   className?: string
@@ -14,14 +14,21 @@ interface LoginModalProps {
 }
 
 export const LoginModal = ({ className, isOpen, onClose }: LoginModalProps) => {
+  const { form } = useSelector(getAuthState);
 
-  const { form } = useSelector(getAuthState)
+  const currentForm = typeModalConfig[form as TypeAuth]?.element || null;
 
   return (
-    <Modal className={classNames(cls.LoginModal, {}, [className])} isBackground={true} isOpen={isOpen} onClose={onClose} lazy>
-       <Suspense fallback={"Loading ..."}>
-        {form === 'login' ? <LoginFormAsync  />  : <RegisterFormAsync /> }
-       </Suspense>
+    <Modal
+      className={classNames(cls.LoginModal, {}, [className])}
+      isBackground={true}
+      isOpen={isOpen}
+      onClose={onClose}
+      lazy
+    >
+      <Suspense fallback={<Loader />}>
+        {currentForm}
+      </Suspense>
     </Modal>
-  )
+  );
 }

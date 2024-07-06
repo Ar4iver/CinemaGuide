@@ -17,10 +17,8 @@ export const logout = createAsyncThunk(
     if(!response.data) {
       throw new Error()
     }
-
     thunkApi.dispatch(profileActions.setIsAuth(false))
     thunkApi.dispatch(fetchProfile())
-
 
     return response.data
     } catch (error) {

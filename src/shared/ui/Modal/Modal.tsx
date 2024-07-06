@@ -2,8 +2,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import React, {
     ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
+import Сross from 'shared/assets/icons/cross_icon.svg'
 import cls from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
+import { Button } from '../Button/Button';
 
 interface ModalProps {
     className?: string;
@@ -71,11 +73,12 @@ export const Modal = (props: ModalProps) => {
     return (
         <Portal>
             <div className={classNames(cls.Modal, mods, [className])}>
-                <div className={cls.overlay} onClick={closeHandler}>
+                <div className={cls.overlay}>
                     <div
                         className={classNames(cls.content, {[cls.background]: isBackground}, [])}
                         onClick={onContentClick}
                     >
+                        <Button className={cls.closeBtn} onClick={closeHandler}><Сross /></Button>
                         {children}
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-.RegisterForm {
+.SuccessForm {
   display: flex;
   flex-direction: column;
   width: 420px;
@@ -9,33 +9,23 @@
   position: relative; 
 }
 
-h4 {
-  margin-bottom: 24px;
-}
-
 .logo {
   margin-bottom: 40px;
 }
 
-.title {
-  font-size: 24px;
-  color: #a76cef;
-  margin-bottom: 20px;
+h2 {
+  font: var(--font-lg);
+  font-weight: 700;
+  margin-bottom: 40px !important
 }
 
-.inputWrapper {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 12px 0px 12px 0px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+p {
+  margin: 0;
+  margin-bottom: 24px;
+  font: var(--font-md);
 }
 
-.input {
-  padding-left: 52px;
-}
-
-.createButton {
+.loginButton {
   width: 100%;
   background-color: #a76cef;
   color: white;
@@ -46,13 +36,4 @@ h4 {
   padding: 16px 0px 16px 0;
   cursor: pointer;
   font-weight: 700;
-  margin-bottom: 24px;
-}
-
-.loginButton:hover {
-  text-decoration: underline;
-}
-
-.errorBorder {
-  border: 1px solid red !important;
 }

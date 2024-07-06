@@ -22,6 +22,5 @@ export const MovieListSkeleton = ({ className, howManySkeletonItem }: MovieSkele
   );
 };
 
-export default MovieListSkeleton;
 
 
